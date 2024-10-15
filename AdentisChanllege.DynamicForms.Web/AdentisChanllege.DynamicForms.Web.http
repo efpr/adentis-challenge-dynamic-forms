@@ -1,0 +1,6 @@
+@AdentisChanllege.DynamicForms.Web_HostAddress = http://localhost:5125
+
+GET {{AdentisChanllege.DynamicForms.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
