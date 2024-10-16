@@ -1,6 +1,7 @@
 ﻿using DynamicForms.Application.CompanyUseCases.Create;
 using FastEndpoints;
 using MediatR;
+using System.Text.Json;
 
 namespace DynamicForms.Presentation.Endpoints
 {
@@ -14,7 +15,7 @@ namespace DynamicForms.Presentation.Endpoints
             Post(Route);
             AllowAnonymous();
             Description(b => b
-                .Accepts<CreateCompanyRequest>()
+                .Accepts<CreateCompanyRequest>("application/json")
                 .Produces<CreateCompanyResponse>()
             );
         }

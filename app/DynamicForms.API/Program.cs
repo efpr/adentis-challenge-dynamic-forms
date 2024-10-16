@@ -9,10 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMediatorSetup();
 builder.AddCompanyMongoRepository();
 
+builder.Services.AddTransient<SeedData>();
+
 builder.Services.AddSwaggerSetup();
 
 var app = builder.Build();
-app.UseFastEndpoints()
+app.UseFastEndpoints(c => c.Serializer.Options.PropertyNameCaseInsensitive = true)
     .UseSwaggerGen();
 
 

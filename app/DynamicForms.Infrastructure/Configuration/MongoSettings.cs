@@ -1,10 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace DynamicForms.Infrastructure.Configuration
 {
-    public record MongoSettings(string ConnectionString, string DatabaseName, string CollectionName);
+    public class MongoSettings
+    {
+        public string ConnectionString { get; set; }
+        public string DatabaseName { get; set; }
+        public string CollectionName { get; set; }
+
+        public MongoSettings() { }
+
+        public MongoSettings(string connectionString, string databaseName, string collectionName)
+        {
+            ConnectionString = connectionString;
+            DatabaseName = databaseName;
+            CollectionName = collectionName;
+        }
+    }
 }

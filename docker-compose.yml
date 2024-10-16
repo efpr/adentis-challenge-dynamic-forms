@@ -1,0 +1,20 @@
+version: "1.0"
+name: dynamics-forms
+
+services:
+  dynamics-forms-api:
+    image: "dynamics-forms-api"
+    build: 
+      context: "./app"
+      dockerfile: "./Dockerfile"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - dynamics-forms-db
+      
+  dynamics-forms-db:
+    image: "mongo"
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: dynamic-forms

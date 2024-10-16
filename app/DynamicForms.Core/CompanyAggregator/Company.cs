@@ -1,5 +1,6 @@
 ﻿
 using DynamicForms.Core.CompanyAggregator;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace DynamicForms.Core.CompanyAggregator
@@ -7,7 +8,7 @@ namespace DynamicForms.Core.CompanyAggregator
     public class Company
     {
         [BsonId]
-        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
+        [BsonRepresentation(BsonType.String)]
         public string Id { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
 

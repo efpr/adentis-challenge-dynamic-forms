@@ -19,7 +19,9 @@ namespace DynamicForms.Infrastructure.SeedData
         public async Task SeedAsync()
         {
             string assemblyLocation = Assembly.GetExecutingAssembly().Location;
-            string filePath = Path.Combine(assemblyLocation, "SeedData/seeddata.json");
+            string assemblyDirectory = Path.GetDirectoryName(assemblyLocation);
+
+            string filePath = Path.Combine(assemblyDirectory, "SeedData", "seeddata.json");
 
             string json = File.ReadAllText(filePath);
 
@@ -32,13 +34,14 @@ namespace DynamicForms.Infrastructure.SeedData
 
             foreach (var company in companies)
             {
-                var exists = await _collection.Find(x => x.Id == company.Id).AnyAsync();
+                var exists = await _collection.Find(x => x.Name == company.Name).AnyAsync();
 
                 if (exists)
                 {
                     continue;
                 }
 
+                company.SetNewId();
                 await _collection.InsertOneAsync(company);
             }
         }
