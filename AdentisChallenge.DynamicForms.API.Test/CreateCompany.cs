@@ -9,7 +9,7 @@ namespace AdentisChallenge.DynamicForms.API.Test
 {
     public class CreateCompany
     {
-        private readonly Mock<ICompanyRepository> mockRepository;
+        private Mock<ICompanyRepository> _mockRepository;
         private readonly HttpClient httpClient;
 
         private const string _route = "/companies";
@@ -21,13 +21,24 @@ namespace AdentisChallenge.DynamicForms.API.Test
 
         public CreateCompany()
         {
-            mockRepository = new Mock<ICompanyRepository>();
-            mockRepository.Setup(x => x.AddAsync(company)).Returns(Task.CompletedTask);
-            
-            var api = new CompanyApiFactory(mockRepository.Object);
+            SetupMockRepository();
+
+            var api = new CompanyApiFactory(_mockRepository.Object);
 
             httpClient = api.CreateClient();
 
+        }
+
+        private void SetupMockRepository()
+        {
+            _mockRepository = new Mock<ICompanyRepository>();
+            _mockRepository.Setup(x => x.AddAsync(company)).Returns(Task.CompletedTask);
+
+            
+            if (_mockRepository is null)
+            {
+                throw new ArgumentNullException(nameof(_mockRepository));
+            }
         }
 
         [Fact]
@@ -45,7 +56,7 @@ namespace AdentisChallenge.DynamicForms.API.Test
 
             
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
-            mockRepository.Verify(x => x.AddAsync(It.Is<Company>(c => c.Name == "Company ABC")), Times.Once);
+            _mockRepository.Verify(x => x.AddAsync(It.Is<Company>(c => c.Name == "Company ABC")), Times.Once);
         }
     }
 }
