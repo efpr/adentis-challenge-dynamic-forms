@@ -1,5 +1,6 @@
 using DynamicForms.Core.CompanyAggregator;
 using DynamicForms.Core.Domain;
+using DynamicForms.Presentation.Endpoints;
 using MongoDB.Driver;
 using Moq;
 using System.Net;
@@ -14,17 +15,21 @@ namespace AdentisChallenge.DynamicForms.API.Test
 
         private const string _route = "/companies";
 
-        private readonly Company company = new Company
+
+        private readonly CreateCompanyRequest createCompanyRequest = new CreateCompanyRequest
         {
             Name = "Company ABC"
         };
 
+        private readonly Company company;
+
         public CreateCompany()
         {
+            company = CreateCompanyRequest.MapToCompany(createCompanyRequest);
+            
             SetupMockRepository();
 
             var api = new CompanyApiFactory(_mockRepository.Object);
-
             httpClient = api.CreateClient();
 
         }
@@ -57,6 +62,19 @@ namespace AdentisChallenge.DynamicForms.API.Test
             
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
             _mockRepository.Verify(x => x.AddAsync(It.Is<Company>(c => c.Name == "Company ABC")), Times.Once);
+        }
+
+        [Fact]
+        public async Task Should_return_400_bad_request_When_send_invalid_company()
+        {
+            var company = new CreateCompanyRequest()
+            {
+                Name = string.Empty
+            };
+
+            var response = await httpClient.PostAsJsonAsync(_route, company);
+
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
     }
 }
