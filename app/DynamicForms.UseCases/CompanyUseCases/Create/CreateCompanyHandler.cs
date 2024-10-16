@@ -2,9 +2,11 @@
 using Ardalis.SharedKernel;
 using DynamicForms.Core.CompanyAggregator;
 using DynamicForms.Core.Exceptions;
+using DynamicForms.Core.ValueObj;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,15 +20,47 @@ namespace DynamicForms.Application.CompanyUseCases.Create
         {
             try
             {
-                request.company.SetNewId();
+                var company = PrepareCompany(request.company);
+
                 await _repository.AddAsync(request.company);
             }
-            catch(Exception)
+            catch (InvalidTypeException ex)
+            {
+                return Result.Error(ex.Message);
+            }
+            catch (Exception)
             {
                 return Result.Error(ERROR_MESSAGE);
             }
 
             return Result.Created(request.company.Id);
+        }
+
+        private Company PrepareCompany(Company company)
+        {
+            company.SetNewId();
+            ValidateFormFieldsTypes(company);
+
+            return company;
+        }
+
+        private void ValidateFormFieldsTypes(Company company)
+        {
+            var validTypes = company.FormFields.All(field => IsValidType(field.Type));
+
+            if (!validTypes)
+            {
+                throw new InvalidTypeException();
+            }
+        }
+
+        private bool IsValidType(string type)
+        {
+            type = type.ToLower();
+
+            var result = InputTypes.AllowedTypes.ContainsKey(type);
+
+            return result;
         }
     }
 }

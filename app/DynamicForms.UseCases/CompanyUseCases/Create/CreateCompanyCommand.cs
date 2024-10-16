@@ -1,6 +1,6 @@
 ﻿using Ardalis.Result;
 using Ardalis.SharedKernel;
-using DynamicForms.Core.Domain;
+using DynamicForms.Core.CompanyAggregator;
 
 namespace DynamicForms.Application.CompanyUseCases.Create
 {

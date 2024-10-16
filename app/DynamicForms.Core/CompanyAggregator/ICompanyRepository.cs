@@ -1,5 +1,4 @@
-﻿using DynamicForms.Core.Domain;
-
+﻿
 namespace DynamicForms.Core.CompanyAggregator
 {
     public interface ICompanyRepository

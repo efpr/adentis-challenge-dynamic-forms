@@ -6,11 +6,5 @@ using System.Threading.Tasks;
 
 namespace DynamicForms.Infrastructure.Configuration
 {
-    public class MongoSettings
-    {
-        public string ConnectionString { get; set; }
-        public string DatabaseName { get; set; }
-
-        public string CollectionName { get; set; }  
-    }
+    public record MongoSettings(string ConnectionString, string DatabaseName, string CollectionName);
 }

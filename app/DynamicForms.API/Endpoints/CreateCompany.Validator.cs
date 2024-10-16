@@ -7,6 +7,26 @@ namespace DynamicForms.Presentation.Endpoints
     {
         public CreateCompanyValidator()
         {
+            CheckNameIsProvided();
+            EnsureFormFieldsArePresent();
+            ValidateFormFields();
+        }
+
+        private void ValidateFormFields()
+        {
+            RuleForEach(x => x.FormFields)
+                .SetValidator(new CreateCompanyFieldsRequestValidator());
+        }
+
+        private void EnsureFormFieldsArePresent()
+        {
+            RuleFor(x => x.FormFields)
+                .NotEmpty()
+                .WithMessage("Form fields are required.");
+        }
+
+        private void CheckNameIsProvided()
+        {
             RuleFor(x => x.Name)
                 .NotEmpty()
                 .WithMessage("Name is required.");
