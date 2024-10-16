@@ -1,0 +1,6 @@
+@DynamicForms.API_HostAddress = http://localhost:5077
+
+POST {{DynamicForms.API_HostAddress}}/companies/
+Accept: application/json
+
+###
