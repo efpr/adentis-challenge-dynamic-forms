@@ -6,14 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AdentisChallenge.DynamicForms.API.Test
 {
-    internal class CompanyApiFactory: WebApplicationFactory<IApiAssemblyMarker>
+    internal class CompanyApiFactory(ICompanyRepository companyRepository) : WebApplicationFactory<IApiAssemblyMarker>
     {
-        private readonly ICompanyRepository _companyRepository;
-
-        public CompanyApiFactory(ICompanyRepository companyRepository)
-        {
-            _companyRepository = companyRepository;
-        }
+        private readonly ICompanyRepository _companyRepository = companyRepository;
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
