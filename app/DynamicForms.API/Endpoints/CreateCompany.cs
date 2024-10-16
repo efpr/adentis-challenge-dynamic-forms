@@ -13,6 +13,10 @@ namespace DynamicForms.Presentation.Endpoints
         {
             Post(Route);
             AllowAnonymous();
+            Description(b => b
+                .Accepts<CreateCompanyRequest>()
+                .Produces<CreateCompanyResponse>()
+            );
         }
 
         public override async Task<CreateCompanyResponse> HandleAsync(CreateCompanyRequest request, CancellationToken cancellationToken)

@@ -13,6 +13,9 @@ namespace DynamicForms.Presentation.Endpoints
         {
             Get(Route);
             AllowAnonymous();
+            Description(b => b
+                .Produces<IEnumerable<GetAllCompaniesResponse>>()
+            );
         }
 
         public override async Task<IEnumerable<GetAllCompaniesResponse>> HandleAsync(CancellationToken cancellationToken)

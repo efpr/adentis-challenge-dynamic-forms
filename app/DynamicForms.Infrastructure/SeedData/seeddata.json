@@ -1,0 +1,79 @@
+[
+    {
+    "name": "Company1",
+    "formFields": [
+        {
+        "label": "Nome Colaborador",
+        "type": "text",
+        "validation": { "required": true }
+        },
+        {
+        "label": "Email",
+        "type": "email",
+        "validation": { "required": true }
+        },
+        {
+        "label": "Nº de Empregado",
+        "type": "text",
+        "validation": {
+            "required": true,
+            "pattern": "^[a-zA-Z0-9]{7}$"
+            } 
+        }
+        ]
+    },
+    {
+    "name": "Company2",
+    "formFields": [
+        {
+        "label": "Nome Cliente",
+        "type": "text",
+        "validation": { "required": true }
+        },
+        {
+        "label": "Email",
+        "type": "email",
+        "validation": { "required": true }
+        },
+        {
+        "label": "Data do Pedido",
+        "type": "date",
+        "validation": { "required": true }
+        },
+        {
+        "label": "Comentário",
+        "type": "textarea"
+        }
+        ]
+    },
+    {
+    "name": "Company3",
+    "formFields": [
+        {
+        "label": "NIF",
+        "type": "number",
+        "validation": { "required": true }
+        },
+        {
+        "label": "Telemóvel",
+        "type": "number",
+        "validation": { "required": true }
+        },
+        {
+        "label": "Email",
+        "type": "email",
+        "validation": { "required": true }
+        },
+        {
+        "label": "Departamentos",
+        "type": "multiselect",
+        "options": [
+            "Human Resources",
+            "Finance",
+            "IT"
+            ],
+        "validation": { "required": true }
+        }
+        ]
+    }
+]
