@@ -1,4 +1,4 @@
-﻿namespace DynamicForms.API
+﻿namespace DynamicForms.Presentation
 {
     public interface IApiAssemblyMarker
     {

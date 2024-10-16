@@ -9,7 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FC8DE483-B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdentisChallenge.DynamicForms.API.Test", "AdentisChallenge.DynamicForms.API.Test\AdentisChallenge.DynamicForms.API.Test.csproj", "{15BD6DC5-1F62-42B2-BB97-21225C538568}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicForms.API", "DynamicForms.API\DynamicForms.API.csproj", "{8F9B28A8-8B09-4EA1-ABC9-AFE8E4462E46}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicForms.Presentation", "DynamicForms.API\DynamicForms.Presentation.csproj", "{8F9B28A8-8B09-4EA1-ABC9-AFE8E4462E46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicForms.Core", "DynamicForms.Core\DynamicForms.Core.csproj", "{84481FB4-7B11-4049-984A-67B98F3A10E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicForms.Infrastructure", "DynamicForms.Infrastructure\DynamicForms.Infrastructure.csproj", "{D982D4B4-59B0-41A2-A364-59EAA204621B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicForms.Application", "DynamicForms.UseCases\DynamicForms.Application.csproj", "{452F891A-A186-4062-82C8-F0308474434E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +31,18 @@ Global
 		{8F9B28A8-8B09-4EA1-ABC9-AFE8E4462E46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F9B28A8-8B09-4EA1-ABC9-AFE8E4462E46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F9B28A8-8B09-4EA1-ABC9-AFE8E4462E46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84481FB4-7B11-4049-984A-67B98F3A10E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84481FB4-7B11-4049-984A-67B98F3A10E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84481FB4-7B11-4049-984A-67B98F3A10E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84481FB4-7B11-4049-984A-67B98F3A10E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D982D4B4-59B0-41A2-A364-59EAA204621B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D982D4B4-59B0-41A2-A364-59EAA204621B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D982D4B4-59B0-41A2-A364-59EAA204621B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D982D4B4-59B0-41A2-A364-59EAA204621B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{452F891A-A186-4062-82C8-F0308474434E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{452F891A-A186-4062-82C8-F0308474434E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{452F891A-A186-4062-82C8-F0308474434E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{452F891A-A186-4062-82C8-F0308474434E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +50,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{15BD6DC5-1F62-42B2-BB97-21225C538568} = {FC8DE483-B723-4D77-B271-8FE60853B093}
 		{8F9B28A8-8B09-4EA1-ABC9-AFE8E4462E46} = {43734CFE-861B-413F-8155-BAB4E771E20B}
+		{84481FB4-7B11-4049-984A-67B98F3A10E1} = {43734CFE-861B-413F-8155-BAB4E771E20B}
+		{D982D4B4-59B0-41A2-A364-59EAA204621B} = {43734CFE-861B-413F-8155-BAB4E771E20B}
+		{452F891A-A186-4062-82C8-F0308474434E} = {43734CFE-861B-413F-8155-BAB4E771E20B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DFB79E94-C99B-491E-9901-3460A7E6DD8E}
