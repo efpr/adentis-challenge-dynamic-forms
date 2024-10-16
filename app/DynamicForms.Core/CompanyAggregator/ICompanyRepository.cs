@@ -5,5 +5,7 @@ namespace DynamicForms.Core.CompanyAggregator
     {
         Task AddAsync(Company entity);
         Task<Company> GetByIdAsync(string id);
+
+        Task<IEnumerable<Company>> GetAllAsync();
     }
 }

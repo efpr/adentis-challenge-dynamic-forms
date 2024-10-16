@@ -30,5 +30,11 @@ namespace DynamicForms.Infrastructure.Persistence
             var document = await _collection.Find(Builders<Company>.Filter.Eq("_id", id)).FirstOrDefaultAsync();
             return document;
         }
+
+        public async Task<IEnumerable<Company>> GetAllAsync()
+        {
+            var documents = await _collection.Find(Builders<Company>.Filter.Empty).ToListAsync();
+            return documents;
+        }
     }
 }
