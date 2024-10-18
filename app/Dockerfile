@@ -6,6 +6,10 @@ USER app
 WORKDIR /app
 EXPOSE 8080
 
+# Step 2: Define build-time arguments
+ARG CONNECTION_STRING
+ARG DATABASE_NAME
+ARG COLLECTION_NAME
 
 # This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
@@ -26,4 +30,9 @@ RUN dotnet publish "./DynamicForms.Presentation.csproj" -c $BUILD_CONFIGURATION 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+ENV CompanyRepositorySettings__ConnectionString=${CONNECTION_STRING} \
+    CompanyRepositorySettings__DatabaseName=${DATABASE_NAME} \
+    CompanyRepositorySettings__CollectionName=${COLLECTION_NAME}
+
 ENTRYPOINT ["dotnet", "DynamicForms.Presentation.dll"]

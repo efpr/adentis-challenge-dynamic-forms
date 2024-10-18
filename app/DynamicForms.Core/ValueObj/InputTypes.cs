@@ -13,6 +13,7 @@ namespace DynamicForms.Core.ValueObj
             { "checkbox", null },
             { "radio", null },
             { "select", null },
+            { "multiselect", null },
             { "textarea", null }
         };
     }
