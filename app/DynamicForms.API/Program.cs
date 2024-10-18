@@ -27,7 +27,6 @@ var app = builder.Build();
 app.UseFastEndpoints(c => c.Serializer.Options.PropertyNameCaseInsensitive = true)
     .UseSwaggerGen();
 
-
 app.UseCors("AllowFrontend");
 
 using (var scope = app.Services.CreateScope())
