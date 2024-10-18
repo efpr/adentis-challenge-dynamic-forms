@@ -11,6 +11,26 @@ services:
       - "8080:8080"
     depends_on:
       - dynamics-forms-db
+    environment:
+      - CompanyRepositorySettings__ConnectionString=mongodb://dynamics-forms-db:27017
+      - CompanyRepositorySettings__DatabaseName=dynamic-forms
+      - CompanyRepositorySettings__CollectionName=companies
+    networks:
+      - app-network
+
+  dynamics-forms-web:
+    image: "dynamics-forms-web"
+    build: 
+      context: "./web"
+      dockerfile: "./Dockerfile"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - dynamics-forms-api
+    environment:
+      - VITE_API_HOST=http://dynamics-forms-api:8080
+    networks:
+      - app-network
       
   dynamics-forms-db:
     image: "mongo"
@@ -18,3 +38,9 @@ services:
       - "27017:27017"
     environment:
       MONGO_INITDB_DATABASE: dynamic-forms
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
